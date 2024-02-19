@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.namsi.Bankapp.dto.AccountInfo;
+import com.namsi.Bankapp.dto.EmailData;
 import com.namsi.Bankapp.dto.bankResponse;
 import com.namsi.Bankapp.dto.userRequest;
 import com.namsi.Bankapp.entity.User;
@@ -19,6 +19,8 @@ public class userServiceImplementation implements userService{
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    EmailService emailService;
 
     @Override
     public bankResponse createAccount(userRequest userRequest) {
@@ -35,6 +37,8 @@ public class userServiceImplementation implements userService{
 
             .build();
         }
+
+        
         User newuser  = User.builder()
                 .firstName(userRequest.getFirstName())
                 .middleName(userRequest.getMiddleName())
@@ -51,7 +55,17 @@ public class userServiceImplementation implements userService{
                 .build();
 
                  User savedUser =userRepository.save(newuser);
-                
+
+                 EmailData emailData = EmailData.builder()
+                 .recipient(savedUser.getEmail())
+                 .subject("Account Creation")
+                 .messageBody("Well Done !! Your account has been successfully created. \n Account details: " +
+                 "Account Name: " + savedUser.getFirstName() + " " + savedUser.getMiddleName() + " " + savedUser.getSurName() + "\nAccount Number: " + savedUser.getAccountNumber())
+
+                 .build();
+
+                 emailService.sendmailAlert(emailData);
+
                  return bankResponse.builder()
 				.responseCode(accountUtils.ACCOUNT_CREATED_CODE)
 				.responseMessage(accountUtils.ACCOUNT_CREATED_MESSAGE)
