@@ -1,5 +1,7 @@
 package com.namsi.Bankapp.dto;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class AccountInfo {
 
     private String accountName;
-    private String accountBalance;
+    private BigDecimal accountBalance;
     private String accountNumber;
 
 }
