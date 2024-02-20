@@ -13,8 +13,27 @@ public class accountUtils {
 
     public static final String ACCOUNT_CREATED_MESSAGE= "Your account was  successfully created.";
 
+    public static final String ACCOUNT_NOT_EXIST_CODE ="300";
 
-            /**
+    public static final String ACCOUNT_NOT_EXISTS_MESSAGE="The following account does not exists";
+    
+    public static final String ACCOUNT_FOUND_CODE = "400";
+    public static final String ACCOUNT_FOUND_SUCCESS = "User Account Found";
+
+
+
+    public static final String ACCOUNT_WAS_CREDITED_SUCCESS ="500";
+    public static final String ACCOUNT_WAS_CREDITED_SUCCESS_MESSAGE="Dear customer your account was  credited successfully";
+
+    public static final String INSUFFICIENT_FUNDS__BALANCE_CODE = "600";
+    public static final String INSUFFICIENT_FUNDS_BALANCE_MESSAGE = "Insufficient Balance";
+ 
+
+    public static final String ACCOUNT_WAS_DEBITED_SUCCESS ="700";
+    public static final String ACCOUNT_WAS_DEBITED_SUCCESS_MESSAGE ="Dear customer your account was debited succesfully";
+    
+    
+    /**
              * create randomsixdigits
              * 
              */
